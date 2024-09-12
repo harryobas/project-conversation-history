@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 2024_09_12_143601) do
   end
 
   create_table "project_conversation_histories", force: :cascade do |t|
-    t.string "project_status"
-    t.integer "conversations_id", null: false
+    t.integer "project_status", default: 0, null: false
+    t.integer "comments_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["conversations_id"], name: "index_project_conversation_histories_on_conversations_id"
+    t.index ["comments_id"], name: "index_project_conversation_histories_on_comments_id"
   end
 
   add_foreign_key "conversations", "comments", column: "comments_id"
-  add_foreign_key "project_conversation_histories", "conversations", column: "conversations_id"
+  add_foreign_key "project_conversation_histories", "comments", column: "comments_id"
 end
