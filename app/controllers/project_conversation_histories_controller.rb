@@ -1,28 +1,26 @@
 class ProjectConversationHistoriesController < ApplicationController
     
-    def show
-        @project_conversation_history = ProjectConversationHistory.find(params[:id])
+    def show_single
+        @project_conversation_history = ProjectConversationHistory.first_or_create(
+            title: "Building Project Conversation History",
+            project_status: "pending"
+            )
+        @comment = Comment.new  
     end
 
     def edit
         @project_conversation_history = ProjectConversationHistory.find(params[:id])
-
-    def create 
-        @project_conversation_history = ProjectConversationHistory.new(project_conversation_history_params)
-        if @project_conversation_history.save
-            redirect_to @project_conversation_history
-        else
-            render 'new'
-        end
     end
 
     def update
         @project_conversation_history = ProjectConversationHistory.find(params[:id])
 
         if @project_conversation_history.update(project_conversation_history_params)
-            redirect_to @project_conversation_history
+            redirect_to root_path
         else
             render 'edit'
+        end
+    end
 
     private
 

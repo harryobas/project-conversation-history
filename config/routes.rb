@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :project_conversation_histories do 
-    resources :comments, only: [:create] do 
-    end
-  end
+  root 'project_conversation_histories#show_single'
   
+  resources :project_conversation_histories, only: [:edit, :update]
+  resources :comments, only: [:create]
 end

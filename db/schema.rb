@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_12_143601) do
+ActiveRecord::Schema.define(version: 2024_09_13_031729) do
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
+    t.text "body", null: false
+    t.integer "project_conversation_histories_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "project_conversation_history_id"
+    t.index ["project_conversation_histories_id"], name: "index_comments_on_project_conversation_histories_id"
+    t.index ["project_conversation_history_id"], name: "index_comments_on_project_conversation_history_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -26,13 +30,13 @@ ActiveRecord::Schema.define(version: 2024_09_12_143601) do
   end
 
   create_table "project_conversation_histories", force: :cascade do |t|
-    t.integer "project_status", default: 0, null: false
-    t.integer "comments_id", null: false
+    t.string "title"
+    t.integer "project_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["comments_id"], name: "index_project_conversation_histories_on_comments_id"
   end
 
+  add_foreign_key "comments", "project_conversation_histories"
+  add_foreign_key "comments", "project_conversation_histories", column: "project_conversation_histories_id"
   add_foreign_key "conversations", "comments", column: "comments_id"
-  add_foreign_key "project_conversation_histories", "comments", column: "comments_id"
 end
