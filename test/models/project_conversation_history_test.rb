@@ -23,4 +23,8 @@ class ProjectConversationHistoryTest < ActiveSupport::TestCase
     assert_equal ["can't be blank"], @project_conversation_history.errors[:project_status]
   end
 
+  test "should have many comments" do
+    assert_respond_to @project_conversation_history, :comments
+  end
+
 end

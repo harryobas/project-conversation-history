@@ -2,7 +2,7 @@ class ProjectConversationHistoriesController < ApplicationController
     
     def show_single
         @project_conversation_history = ProjectConversationHistory.first_or_create(
-            title: "Building Project Conversation History",
+            title: "Building Project",
             project_status: "pending"
             )
         @comment = Comment.new  
