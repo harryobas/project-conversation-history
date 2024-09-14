@@ -12,14 +12,15 @@ This app is dockerized to enable both ease of execution and deployment.To instal
 
 1. clone the repository
 
-'''bash
+```bash
 git clone https://github.com/harryobas/project-conversation-history.git
-'''
+cd project-conversation-history
+```
 
 2. build docker image and start container
 
-'''bash
+```bash
 make run
-'''
+```
 
 3. access the application on: localhost:3000/
