@@ -1,24 +1,25 @@
-# README
+# Introduction
+A Ruby on Rails application that provides functionality for project conversation. It allows users to leave comments and as well as change status of the project.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+Ruby 3.3.0 
+Rails 6.1.5
 
-Things you may want to cover:
+## How to run 
 
-* Ruby version
+### Docker 
+This app is dockerized to enable both ease of execution and deployment.To install/run on Linux, make sure to have both docker and docker-compose installed on your machine and follow the instructions below:
 
-* System dependencies
+1. clone the repository
 
-* Configuration
+'''bash
+git clone https://github.com/harryobas/project-conversation-history.git
+'''
 
-* Database creation
+2. build docker image and start container
 
-* Database initialization
+'''bash
+make run
+'''
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. access the application on: localhost:3000/
