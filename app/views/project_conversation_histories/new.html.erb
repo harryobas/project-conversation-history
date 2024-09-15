@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center">New Project Conversation</h1>
+
+      <%= form_with model: @project_conversation_history, local: true, class: "needs-validation" do |form| %>
+
+        <% if @project_conversation_history.errors.any? %>
+          <div class="alert alert-danger">
+            <h4>There were errors:</h4>
+            <ul>
+              <% @project_conversation_history.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        
+        <div class="form-group mb-3">
+          <%= form.label :title, 'Project Title', class: 'form-label' %>
+          <%= form.text_field :title, class: 'form-control', placeholder: 'Enter project title' %>
+        </div>
+
+        
+        <div class="form-group mb-3">
+          <%= form.label :project_status, 'Project Status', class: 'form-label' %>
+          <%= form.select :project_status, ['pending', 'ongoing', 'completed'], {}, class: 'form-select' %>
+        </div>
+
+        
+        <div class="form-group mt-4">
+          <%= form.submit 'Create Project', class: 'btn btn-primary w-100' %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
